@@ -4,7 +4,7 @@ function fetchDataPromise(){
     .then(res=>res.json())
     .then(json=>render(json)) 
 }
-const termekek =[]
+const kosar =[]
 
 function render(adat){
     let formazotttermek = adat.map(elem =>`
@@ -15,8 +15,12 @@ function render(adat){
             <p class="category">${elem.category}</p>
             <img src="${elem.image}" class="image"></img>
             <p class="rating"> ${elem.rating.rate} ${elem.rating.count}</p>
+            <button onclick="addcart()">Kosárhoz adás</button>
         </div>
         `)
     hely.innerHTML= formazotttermek
 }
 
+function addcart(){
+    
+}
