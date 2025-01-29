@@ -25,6 +25,7 @@ function render(adat){
 
 let kosardiv = document.getElementById("kosar");
 function addcart(elem){
+    console.log("asd")
     kosar.push(elem)
     let tartalom = ""
     if(kosar.length===0){
@@ -41,8 +42,9 @@ function addcart(elem){
                             <span id="${item.id}">1</span>
                             <button>+</button>
                         </div>`
-            kosardiv+=tartalom
+            
         })
+        kosardiv.innerHTML=tartalom
     }
 }
 
