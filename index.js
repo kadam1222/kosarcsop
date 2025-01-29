@@ -1,11 +1,12 @@
-let hely =document.getElementById("hely");
+let hely =[];
+let termekekhelye = document.getElementById("hely");
 function fetchDataPromise(){
     fetch('https://fakestoreapi.com/products')
     .then(res=>res.json())
     .then(json=>render(json)) 
 }
-const kosar =[]
-const termekek =[]
+
+
 function render(adat){
     let formazotttermek = adat.map(elem =>`
         <div class="termek">
@@ -15,25 +16,25 @@ function render(adat){
             <p class="category">${elem.category}</p>
             <img src="${elem.image}" class="image"></img>
             <p class="rating"> ${elem.rating.rate} ${elem.rating.count}</p>
-            <button onclick="addcart(${elem})">Kosárhoz adás</button>
+            <button onclick="addcart(${hely})">Kosárhoz adás</button>
         </div>
-        `).join("");
-        termekek.push()
-    hely.innerHTML= formazotttermek
+        `).join("")
+        hely+= formazotttermek
+        
+    termekekhelye.innerHTML=hely
     
 }
 
 let kosardiv = document.getElementById("kosar");
 function addcart(elem){
-    console.log("asd")
-    kosar.push(elem)
+    
     let tartalom = ""
     if(kosar.length===0){
         tartalom = 'A kosár üres'
         kosardiv.innerHTML =tartalom
     }
     else{
-        kosar.forEach(item =>{
+        elem.forEach(item =>{
             tartalom+=`<div class="kosar">
                             <p>${item.title}</p><br>
                             <p>${item.price}</p><br>
@@ -44,7 +45,7 @@ function addcart(elem){
                         </div>`
             
         })
-        kosardiv.innerHTML=tartalom
+        kosardiv.innerHTML+=tartalom
     }
 }
 
